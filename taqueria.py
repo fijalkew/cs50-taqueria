@@ -1,4 +1,4 @@
-menu={
+menu = {
     "Baja Taco": 4.25,
     "Burrito": 7.50,
     "Bowl": 8.50,
@@ -9,20 +9,15 @@ menu={
     "Taco": 3.00,
     "Tortilla Salad": 8.00
 }
-def price(sum):
-    print(f'Total: ${sum}')
-    while True:
-        try:
-            m=input("Item: ")
-            if not m.isalpha():
-                break
-            price(sum + menu[m.title()])
-        except KeyError:
-            price(sum)
-        
 
-        
-    
-   
+total = 0
 
-price(0)
+while True:
+    try:
+        item = input("Item: ").title()
+        if item in menu:
+            total += menu[item]
+            print(f"Total: ${total:.2f}")
+    except EOFError:
+        print()  # just to end with a newline
+        break
